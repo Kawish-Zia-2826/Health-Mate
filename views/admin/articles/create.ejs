@@ -1,0 +1,69 @@
+<div id="admin-content">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="admin-heading">Add New Article</h1>
+        </div>
+        <div class="col-md-8 mx-auto">
+          <div class="card">
+            <h5 class="card-header">Add New Article</h5>
+            <div class="card-body">
+              <!-- Form -->
+              <form action="/admin/add-article" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="article_title" class="form-label">Title</label>
+                    <input type="text" name="title" id="article_title" class="form-control" autocomplete="off" >
+                </div>
+                <div class="mb-3">
+                    <label for="summernote" class="form-label">Description</label>
+                    <textarea name="content" id="summernote" class="form-control" rows="5"  ></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="article_category" class="form-label">Category</label>
+                    <select name="category" id="article_category" class="form-control">
+                        <option value="" selected disabled> Select Category</option>
+                        <% categories.forEach(category => { %>
+                          <option value="<%= category._id %>"><%= category.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="article_image" class="form-label">Article image</label>
+                    <input type="file" name="image" id="article_image" class="form-control" >
+                </div>
+                <input type="submit" name="submit" class="btn btn-primary" value="Save"  />
+              </form>
+           <%- include('../partials/error')%>
+              <!--/Form -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Summernote Lite JS -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.js"></script>
+<!-- <script src="js/summernote-bs5.js"></script> -->
+<script>
+  $(document).ready(function () {
+    $('#summernote').summernote({
+      placeholder: 'Start typing...',
+      tabsize: 2,
+      height: 200
+    });
+  });
+
+    document.querySelector('form').addEventListener('submit',function(e){
+    let files  = document.querySelector('input[name="files"]');
+    if(files){
+        files.remove();
+    }
+  })
+</script>
+
+
+<%- contentFor('summerNote') %>
+   <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-lite.min.css" rel="stylesheet">

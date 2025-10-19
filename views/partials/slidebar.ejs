@@ -1,0 +1,44 @@
+<div id="sidebar" >
+  <!-- search box -->
+  <div class="search-box-container">
+      <h4>Search</h4>
+      <form class="search-post" action="/search" method ="GET">
+          <div class="input-group">
+              <input type="text" name="search" class="form-control" placeholder="Search .....">
+              <span class="input-group-btn">
+                  <button type="submit" class="btn btn-danger">Search</button>
+              </span>
+          </div>
+      </form>
+  </div>
+  <!-- /search box -->
+  <!-- recent posts box -->
+  <div class="recent-post-container">
+      <h4>Recent Posts</h4>
+     <% slidebar.forEach((news) => {%> 
+     <div class="recent-post">
+          <a class="post-img" href="">
+              <img src="<%= news.images%>" alt=""/>
+          </a>
+          <div class="post-content">
+              <h5><a href="/single/<%= news._id%>"><%- news.content%></a></h5>
+              <span>
+                  <i class="fa fa-tags" aria-hidden="true"></i>
+                  <a href='/category/<%= news.category.slug%>'><%= news.title%></a>
+              </span>
+              <span>
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                  <%= slidebar.createdAt%>
+              </span>
+              <a class="read-more" href="single.html">read more</a>
+          </div>
+      </div>
+     <% }) %>
+
+
+
+
+
+  </div>
+  <!-- /recent posts box -->
+</div>
