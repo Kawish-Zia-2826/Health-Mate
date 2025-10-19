@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HealthMate 💚 - Sehat ka Smart Dost</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 🌿 Navbar -->
+  <nav class="navbar">
+    <h1>💚 HealthMate</h1>
+    <ul>
+      <li><a href="#login" class="nav-link" data-target="login">Login</a></li>
+      <li><a href="#dashboard" class="nav-link" data-target="dashboard">Dashboard</a></li>
+      <li><a href="#upload" class="nav-link" data-target="upload">Upload Report</a></li>
+      <li><a href="#vitals" class="nav-link" data-target="vitals">Add Vitals</a></li>
+      <li><a href="#timeline" class="nav-link" data-target="timeline">Timeline</a></li>
+    </ul>
+  </nav>
+
+  <!-- 🩺 Login Section -->
+  <section id="login" class="section pane">
+    <h2>Login / Signup</h2>
+    <p class="subtext">Apna account banaen ya login karein</p>
+    <div class="form-box glass">
+      <input type="text" id="username" placeholder="Enter Name" />
+      <input type="password" id="password" placeholder="Enter Password" />
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+        <button id="loginBtn" class="btn-primary">Login</button>
+        <button id="signupBtn" class="btn-outline">Signup</button>
+      </div>
+      <p class="note">Demo app — no real auth. Data stored locally.</p>
+    </div>
+  </section>
+
+  <!-- 📊 Dashboard -->
+  <section id="dashboard" class="section pane" style="display:none;">
+    <h2>Dashboard</h2>
+    <p class="subtext">Your health overview – Aapki sehat ka short summary</p>
+    <div class="cards">
+      <div class="card glass">
+        <h3>Total Reports</h3>
+        <p id="reportCount">0</p>
+      </div>
+      <div class="card glass">
+        <h3>Last BP Reading</h3>
+        <p id="lastBP">--</p>
+      </div>
+      <div class="card glass">
+        <h3>Last Update</h3>
+        <p id="lastUpdate">--</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📁 Upload Report -->
+  <section id="upload" class="section pane" style="display:none;">
+    <h2>Upload Report</h2>
+    <p class="subtext">Upload apni medical report file</p>
+    <div class="form-box glass">
+      <input type="file" id="reportFile" accept="application/pdf,image/*" />
+      <input type="text" id="reportType" placeholder="Report Type (e.g. Blood Test)" />
+      <input type="date" id="reportDate" />
+      <button id="uploadBtn" class="btn-primary">Upload</button>
+    </div>
+    <div id="reportList" class="report-list"></div>
+  </section>
+
+  <!-- ❤️ Add Manual Vitals -->
+  <section id="vitals" class="section pane" style="display:none;">
+    <h2>Add Manual Vitals</h2>
+    <p class="subtext">Apni readings manually add karein</p>
+    <div class="form-box glass">
+      <input type="text" id="bp" placeholder="BP (e.g. 120/80)" />
+      <input type="text" id="sugar" placeholder="Sugar (e.g. 95)" />
+      <input type="text" id="weight" placeholder="Weight (e.g. 65kg)" />
+      <button id="addVitalsBtn" class="btn-primary">Add Vitals</button>
+    </div>
+  </section>
+
+  <!-- 🕓 Timeline -->
+  <section id="timeline" class="section pane" style="display:none;">
+    <h2>Health Timeline</h2>
+    <p class="subtext">All your reports & vitals in order</p>
+
+    <div style="display:flex;gap:8px;justify-content:center;margin-bottom:12px;">
+      <button id="langEn" class="btn-outline">English</button>
+      <button id="langRoman" class="btn-outline">Roman Urdu</button>
+    </div>
+
+    <div id="timelineContainer" class="timeline"></div>
+  </section>
+
+  <!-- 📄 AI Summary -->
+  <section id="summary" class="section pane" style="display:none;">
+    <h2>AI Summary</h2>
+    <div class="ai-box glass">
+      <p id="summaryEnglish"><strong>English:</strong> —</p>
+      <p id="summaryRoman"><strong>Roman Urdu:</strong> —</p>
+    </div>
+  </section>
+
+  <!-- Report Modal -->
+  <div id="modal" class="modal" style="display:none;">
+    <div class="modal-content glass">
+      <button id="modalClose" class="btn-outline" style="float:right">Close</button>
+      <h3 id="modalTitle"></h3>
+      <p id="modalMeta" class="text-muted"></p>
+      <div id="modalPreview" style="margin-top:10px;"></div>
+      <div id="modalSummary" style="margin-top:12px;"></div>
+    </div>
+  </div>
+
+  <footer>
+    <p>💚 HealthMate - Sehat ka Smart Dost | AI is for understanding only, not for medical advice.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
